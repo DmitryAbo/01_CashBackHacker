@@ -7,6 +7,14 @@ import static org.junit.Assert.*;
 public class CashbackHackerTest {
 
     @Test
+    public void shouldLowBorderLessAmount() {
+        CashbackHacker service = new CashbackHacker();
+        int expected = 1000;
+        int actual = service.remain(-1);
+        assertEquals(actual, expected);
+    }
+
+    @Test
     public void shouldLowBorderAmount() {
         CashbackHacker service = new CashbackHacker();
         int expected = 1000;
@@ -41,7 +49,7 @@ public class CashbackHackerTest {
     @Test
     public void shouldHighBorderAmount() {
         CashbackHacker service = new CashbackHacker();
-        int expected = 1000;
+        int expected = 0;
         int actual = service.remain(1000);
         assertEquals(actual, expected);
     }
